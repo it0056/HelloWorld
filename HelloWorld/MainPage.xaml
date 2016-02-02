@@ -8,11 +8,35 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="60,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="button" Content="Say Hello" HorizontalAlignment="Left" Margin="225,157,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="60,64,0,0" TextWrapping="Wrap" Text="Hello, world!" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="60,132,0,0" TextWrapping="Wrap" Text="What is you name?" VerticalAlignment="Top"/>
-        <TextBlock x:Name="greetingOutput" HorizontalAlignment="Left" Height="156" Margin="60,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="189"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="wideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="narrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="inputPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="inputButton.Margin" Value="0,4,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel x:Name="contentPanel" Margin="8,32,0,0">
+            <TextBlock Text="Hello, world!" Margin="0,0,0,40"/>
+            <TextBlock Text="What's your name?"/>
+            <StackPanel x:Name="inputPanel" Orientation="Horizontal" Margin="0,20,0,20">
+                <TextBox x:Name="nameInput" Width="280" HorizontalAlignment="Left"/>
+                <Button x:Name="inputButton" Content="Say &quot;Hello&quot;"/>
+            </StackPanel>
+            <TextBlock x:Name="greetingOutput"/>
+        </StackPanel>
+
 
     </Grid>
 </Page>

@@ -16,7 +16,8 @@ namespace HelloWorld
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            greetingOutput.Text = "Hello, " + textBox.Text + "!";
+            greetingOutput.Text = "Hello, " + nameInput.Text + "!";
+
         }
     }
 }
